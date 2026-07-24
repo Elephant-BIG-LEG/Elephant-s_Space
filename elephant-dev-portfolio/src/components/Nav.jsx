@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './Nav.css';
 
 const links = [
@@ -20,8 +20,7 @@ function Nav() {
   }, []);
 
   return (
-    <nav className={
-av }>
+    <nav className={`nav${scrolled ? ' nav-scrolled' : ''}`}>
       <div className="nav-inner">
         <a href="#" className="nav-logo">
           Elephant<span>.</span>dev
@@ -46,8 +45,7 @@ av }>
             )}
           </svg>
         </button>
-        <ul className={
-av-links }>
+        <ul className={`nav-links${open ? ' open' : ''}`}>
           {links.map((l) => (
             <li key={l.href}>
               <a href={l.href} onClick={() => setOpen(false)}>
