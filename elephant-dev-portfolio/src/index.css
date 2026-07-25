@@ -1,33 +1,34 @@
 ﻿*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  /* ========== 大象主题配色系统 ========== */
-  --bg-primary: #0c0c12;
-  --bg-secondary: #14141f;
-  --bg-card: rgba(255, 255, 255, 0.03);
-  --bg-card-hover: rgba(255, 255, 255, 0.06);
+  /* ========== 清爽亮色主题配色系统 ========== */
+  --bg-primary: #f8f9fc;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f0f2f7;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f5f6fa;
   
-  --text-primary: #f0f0f5;
-  --text-secondary: #9a9ab0;
-  --text-muted: #6a6a80;
+  --text-primary: #1a1a2e;
+  --text-secondary: #5a5a7a;
+  --text-muted: #9a9ab0;
   
-  /* 渐变核心色 — 紫→靛蓝→青 */
-  --gradient-start: #a855f7;
-  --gradient-mid: #6366f1;
-  --gradient-end: #06b6d4;
+  /* 渐变核心色 — 紫→靛蓝→青（保持品牌色） */
+  --gradient-start: #7c3aed;
+  --gradient-mid: #4f46e5;
+  --gradient-end: #0891b2;
   
   /* 强调色 */
-  --accent-amber: #f59e0b;
-  --accent-green: #10b981;
-  --accent-pink: #ec4899;
+  --accent-amber: #d97706;
+  --accent-green: #059669;
+  --accent-pink: #db2777;
   
-  /* 光晕 */
-  --glow-purple: rgba(168, 85, 247, 0.15);
-  --glow-blue: rgba(99, 102, 241, 0.15);
-  --glow-cyan: rgba(6, 182, 212, 0.15);
+  /* 光晕（亮色模式下更柔和） */
+  --glow-purple: rgba(124, 58, 237, 0.08);
+  --glow-blue: rgba(79, 70, 229, 0.08);
+  --glow-cyan: rgba(8, 145, 178, 0.08);
   
-  --border: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(168, 85, 247, 0.3);
+  --border: rgba(0, 0, 0, 0.06);
+  --border-hover: rgba(124, 58, 237, 0.25);
   
   --radius-lg: 20px;
   --radius-md: 14px;
@@ -37,7 +38,7 @@
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --max-width: 1100px;
   
-  /* 字体 — Google Fonts CDN */
+  /* 字体 */
   --font-heading: 'Space Grotesk', sans-serif;
   --font-body: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'Space Mono', 'Fira Code', monospace;
@@ -52,6 +53,45 @@ body {
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  cursor: default;
+}
+
+/* 自定义光标跟随点 */
+.cursor-dot {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background 0.2s;
+  mix-blend-mode: difference;
+}
+
+.cursor-ring {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid rgba(124, 58, 237, 0.4);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s, border-color 0.3s;
+}
+
+.cursor-dot.hovering {
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(135deg, var(--gradient-end), var(--gradient-start));
+}
+
+.cursor-ring.hovering {
+  width: 60px;
+  height: 60px;
+  border-color: rgba(124, 58, 237, 0.6);
 }
 
 a { color: inherit; text-decoration: none; transition: color var(--transition); }
@@ -77,6 +117,8 @@ img { max-width: 100%; display: block; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 .reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+.reveal-delay-6 { transition-delay: 0.6s; }
 
 /* 渐变文字 */
 .gradient-text {
@@ -86,50 +128,13 @@ img { max-width: 100%; display: block; }
   background-clip: text;
 }
 
-/* 渐变边框 */
-.gradient-border {
-  position: relative;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
-  background: var(--bg-card);
-}
-.gradient-border::before {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: var(--radius-md);
-  padding: 1px;
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity var(--transition);
-}
-.gradient-border:hover::before {
-  opacity: 1;
-}
-
 /* 毛玻璃效果 */
 .glass {
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
 }
 
-/* 大象装饰 SVG 占位 */
-.elephant-logo-placeholder {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-sm);
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  color: white;
-  flex-shrink: 0;
-}
-
 @media (max-width: 768px) {
   html { font-size: 14px; }
+  .cursor-dot, .cursor-ring { display: none; }
 }

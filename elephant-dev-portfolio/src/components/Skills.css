@@ -1,4 +1,4 @@
-﻿/* ========== Skills CSS ========== */
+﻿/* ========== Skills CSS — 亮色 ========== */
 .skills {
   border-top: 1px solid var(--border);
 }
@@ -16,12 +16,13 @@
   border-radius: var(--radius-lg);
   overflow: hidden;
   transition: all var(--transition);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
 .skill-category:hover {
   border-color: var(--border-hover);
   transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
 }
 
 .skill-category-header {
@@ -38,7 +39,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-md);
   flex-shrink: 0;
 }
@@ -73,7 +74,7 @@
 .skill-bar-bg {
   width: 100%;
   height: 6px;
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--bg-tertiary);
   border-radius: 3px;
   overflow: hidden;
 }

@@ -1,4 +1,4 @@
-﻿/* ========== Contact CSS ========== */
+﻿/* ========== Contact CSS — 亮色 ========== */
 .contact {
   border-top: 1px solid var(--border);
 }
@@ -35,6 +35,7 @@
   font-weight: 500;
   transition: all var(--transition);
   font-family: var(--font-body);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
 .contact-link:hover {
