@@ -1,4 +1,5 @@
-﻿.contact {
+﻿/* ========== Contact CSS ========== */
+.contact {
   border-top: 1px solid var(--border);
 }
 
@@ -16,42 +17,55 @@
 .contact-links {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 1rem;
   margin-top: 2rem;
+  flex-wrap: wrap;
 }
 
 .contact-link {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 1rem 2rem;
+  padding: 1rem 1.75rem;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
   color: var(--text-primary);
   font-size: 0.95rem;
   font-weight: 500;
   transition: all var(--transition);
+  font-family: var(--font-body);
 }
 
 .contact-link:hover {
-  border-color: var(--accent);
+  border-color: var(--gradient-mid);
   transform: translateY(-3px);
-  box-shadow: 0 8px 24px var(--accent-glow);
-  color: var(--text-primary);
+  box-shadow: 0 8px 32px var(--glow-purple);
+  background: var(--bg-card-hover);
 }
 
 .contact-link svg {
   width: 20px;
   height: 20px;
-  color: var(--accent);
+  color: var(--gradient-mid);
 }
 
 .contact-footer {
   text-align: center;
-  padding: 3rem 2rem;
+  padding: 4rem 2rem 2rem;
   border-top: 1px solid var(--border);
   margin-top: 4rem;
+}
+
+.footer-elephant {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  animation: elephant-bounce 3s ease-in-out infinite;
+}
+
+@keyframes elephant-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
 .footer-text {
@@ -61,7 +75,11 @@
 }
 
 .footer-text span {
-  color: var(--accent);
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
 }
 
 @media (max-width: 768px) {

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import './Nav.css';
 
 const links = [
@@ -12,9 +12,21 @@ const links = [
 function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20);
+      
+      const sections = ['hero', 'about', 'skills', 'projects', 'journey', 'contact'];
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i]);
+        if (el && el.getBoundingClientRect().top <= 150) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
+    };
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -22,8 +34,9 @@ function Nav() {
   return (
     <nav className={`nav${scrolled ? ' nav-scrolled' : ''}`}>
       <div className="nav-inner">
-        <a href="#" className="nav-logo">
-          Elephant<span>.</span>dev
+        <a href="#hero" className="nav-logo">
+          <div className="nav-logo-icon">🐘</div>
+          <span className="nav-logo-text">Elephant<span>.</span>dev</span>
         </a>
         <button
           className="nav-toggle"
@@ -48,7 +61,11 @@ function Nav() {
         <ul className={`nav-links${open ? ' open' : ''}`}>
           {links.map((l) => (
             <li key={l.href}>
-              <a href={l.href} onClick={() => setOpen(false)}>
+              <a 
+                href={l.href} 
+                onClick={() => setOpen(false)}
+                className={activeSection === l.href.slice(1) ? 'active' : ''}
+              >
                 {l.label}
               </a>
             </li>

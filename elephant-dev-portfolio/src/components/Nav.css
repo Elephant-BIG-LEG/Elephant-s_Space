@@ -1,81 +1,158 @@
-﻿.nav {
+﻿/* ========== Nav CSS ========== */
+.nav {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 100;
-  padding: 1rem 2rem;
-  background: rgba(10, 10, 15, 0.85);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid transparent;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-pill);
+  background: rgba(12, 12, 18, 0.7);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--border);
   transition: all var(--transition);
+  max-width: calc(100vw - 2rem);
 }
+
 .nav-scrolled {
-  border-bottom-color: var(--border);
-  background: rgba(10, 10, 15, 0.95);
+  top: 0.5rem;
+  background: rgba(12, 12, 18, 0.9);
+  border-color: var(--border-hover);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
+
 .nav-inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
 }
+
 .nav-logo {
-  font-family: var(--font-mono);
-  font-size: 1.1rem;
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--text-primary);
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
-.nav-logo span { color: var(--accent); }
+
+.nav-logo-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+  transition: transform var(--transition);
+}
+
+.nav-logo:hover .nav-logo-icon {
+  transform: rotate(-10deg) scale(1.1);
+}
+
+.nav-logo-text span {
+  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 0.25rem;
   list-style: none;
+  margin-left: auto;
 }
+
 .nav-links a {
   color: var(--text-secondary);
-  font-size: 0.825rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  transition: color var(--transition);
-  position: relative;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-pill);
+  transition: all var(--transition);
+  white-space: nowrap;
 }
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--accent);
-  transition: width var(--transition);
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.06);
 }
-.nav-links a:hover { color: var(--text-primary); }
-.nav-links a:hover::after { width: 100%; }
+
+.nav-links a.active {
+  background: linear-gradient(135deg, var(--glow-purple), var(--glow-cyan));
+  color: var(--text-primary);
+}
+
 .nav-toggle {
   display: none;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0.25rem;
+  padding: 0.5rem;
+  color: var(--text-primary);
 }
-.nav-toggle svg { width: 24px; height: 24px; stroke: var(--text-primary); }
+
+.nav-toggle svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+}
+
 @media (max-width: 768px) {
+  .nav {
+    top: 0;
+    border-radius: 0;
+    left: 0;
+    transform: none;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+  }
+  
+  .nav-scrolled {
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+  }
+  
+  .nav-logo-text { display: none; }
+  
   .nav-toggle { display: block; }
+  
   .nav-links {
     position: fixed;
-    top: 60px;
-    right: -100%;
-    width: 200px;
-    height: calc(100vh - 60px);
-    background: var(--bg-secondary);
+    top: 56px;
+    right: 0;
+    width: 100%;
+    height: calc(100vh - 56px);
+    background: rgba(12, 12, 18, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     flex-direction: column;
     padding: 2rem;
-    gap: 1.5rem;
-    border-left: 1px solid var(--border);
-    transition: right var(--transition);
+    gap: 0.5rem;
+    transform: translateX(100%);
+    transition: transform var(--transition);
   }
-  .nav-links.open { right: 0; }
+  
+  .nav-links.open {
+    transform: translateX(0);
+  }
+  
+  .nav-links a {
+    font-size: 1.1rem;
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    text-align: center;
+  }
 }

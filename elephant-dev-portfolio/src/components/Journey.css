@@ -1,74 +1,116 @@
-﻿.journey {
+﻿/* ========== Journey CSS ========== */
+.journey {
   border-top: 1px solid var(--border);
 }
 
 .timeline {
   position: relative;
-  padding-left: 3rem;
+  padding: 2rem 0;
 }
 
+/* 中央垂直线 */
 .timeline::before {
   content: '';
   position: absolute;
-  left: 7px;
+  left: 50%;
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(to bottom, var(--accent), var(--gradient-end), var(--border));
+  background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-mid), var(--gradient-end), transparent);
+  transform: translateX(-50%);
 }
 
 .timeline-item {
   position: relative;
-  padding-bottom: 3rem;
+  width: 50%;
+  padding: 0 3rem 4rem;
 }
 
-.timeline-item:last-child {
-  padding-bottom: 0;
+.timeline-item.reverse {
+  margin-left: 50%;
 }
 
 .timeline-dot {
   position: absolute;
-  left: -3rem;
-  top: 4px;
-  width: 16px;
-  height: 16px;
+  top: 0.5rem;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: var(--bg-primary);
-  border: 2px solid var(--accent);
-  z-index: 1;
-}
-
-.timeline-item:last-child .timeline-dot {
-  background: var(--accent);
-  box-shadow: 0 0 12px var(--accent-glow);
-}
-
-.timeline-arrow {
+  border: 2px solid var(--dot-gradient);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-muted);
-  margin: 0.5rem 0;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
+  z-index: 2;
+  transition: all var(--transition);
+}
+
+.timeline-item:hover .timeline-dot {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px var(--glow-purple);
+}
+
+.timeline-item.reverse .timeline-dot {
+  left: -24px;
+}
+
+.timeline-item:not(.reverse) .timeline-dot {
+  right: -24px;
+}
+
+.timeline-content {
+  padding: 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition);
+}
+
+.timeline-content:hover {
+  border-color: var(--border-hover);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-year {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--gradient-mid);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 600;
 }
 
 .timeline-title {
+  font-family: var(--font-heading);
   font-size: 1.15rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem 0;
   letter-spacing: -0.3px;
 }
 
 .timeline-desc {
   color: var(--text-secondary);
   font-size: 0.9rem;
+  line-height: 1.7;
 }
 
 @media (max-width: 768px) {
-  .timeline {
-    padding-left: 2rem;
+  .timeline::before {
+    left: 24px;
   }
-  .timeline-dot {
-    left: -2rem;
+  
+  .timeline-item,
+  .timeline-item.reverse {
+    width: 100%;
+    margin-left: 0;
+    padding: 0 0 2rem 4rem;
+  }
+  
+  .timeline-dot,
+  .timeline-item.reverse .timeline-dot,
+  .timeline-item:not(.reverse) .timeline-dot {
+    left: 0;
+    right: auto;
   }
 }

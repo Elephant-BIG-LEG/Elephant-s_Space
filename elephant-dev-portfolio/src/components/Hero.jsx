@@ -1,26 +1,104 @@
+﻿import { useEffect, useRef } from 'react';
 import './Hero.css';
 
 function Hero() {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    // 粒子背景动画
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let animationFrameId;
+    let particles = [];
+    
+    const resize = () => {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    };
+    resize();
+    window.addEventListener('resize', resize);
+    
+    // 创建粒子
+    const particleCount = window.innerWidth < 768 ? 30 : 60;
+    for (let i = 0; i < particleCount; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        size: Math.random() * 2 + 0.5,
+        opacity: Math.random() * 0.5 + 0.1,
+      });
+    }
+    
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      particles.forEach((p, i) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+        
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(168, 85, 247, ${p.opacity})`;
+        ctx.fill();
+        
+        // 连线
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = p.x - particles[j].x;
+          const dy = p.y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(99, 102, 241, ${0.15 * (1 - dist / 120)})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      });
+      
+      animationFrameId = requestAnimationFrame(animate);
+    };
+    animate();
+    
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('resize', resize);
+    };
+  }, []);
+
   return (
     <section className="hero" id="hero">
-      <div className="hero-bg" />
+      <canvas ref={canvasRef} className="hero-canvas" />
+      <div className="hero-gradient-bg" />
       <div className="hero-content">
-        <div className="hero-badge">
+        <div className="hero-badge reveal">
           <span className="hero-badge-dot" />
           寻找机会中
         </div>
-        <h1 className="hero-name">
-          你好，我是 <span className="hero-name-accent">Elephant</span>
+        <h1 className="hero-greeting reveal reveal-delay-1">
+          👋 你好，我是
         </h1>
-        <div className="hero-titles">
+        <h2 className="hero-name reveal reveal-delay-2">
+          <span className="elephant-icon">🐘</span>
+          <span className="gradient-text">Elephant</span>
+        </h2>
+        <div className="hero-titles reveal reveal-delay-3">
           <span className="hero-title-tag">后端工程师</span>
           <span className="hero-title-tag">AI 应用开发者</span>
         </div>
-        <p className="hero-desc">
+        <p className="hero-desc reveal reveal-delay-3">
           构建可扩展的后端系统和 AI 驱动的应用程序。
+          <br />
           专注于 Java 生态、分布式系统和大语言模型应用。
         </p>
-        <div className="hero-actions">
+        <div className="hero-actions reveal reveal-delay-4">
           <a href="#projects" className="btn btn-primary">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <polygon points="12 2 2 7 12 12 22 7 12 2" />

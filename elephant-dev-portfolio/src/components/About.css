@@ -1,10 +1,11 @@
-﻿.about {
+﻿/* ========== About CSS ========== */
+.about {
   border-top: 1px solid var(--border);
 }
 
 .about-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.2fr 1fr;
   gap: 4rem;
   align-items: start;
 }
@@ -13,74 +14,93 @@
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
   font-size: 1.05rem;
+  line-height: 1.9;
 }
 
 .about-focus {
-  list-style: none;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 0.75rem;
+  margin-top: 1rem;
 }
 
-.about-focus li {
+.focus-item {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  font-size: 0.95rem;
+  gap: 0.6rem;
+  padding: 0.5rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-pill);
+  font-size: 0.9rem;
   color: var(--text-secondary);
+  transition: all var(--transition);
 }
 
-.about-focus li::before {
-  content: '';
+.focus-item:hover {
+  border-color: var(--focus-color);
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+}
+
+.focus-dot {
   width: 8px;
   height: 8px;
-  border-radius: 2px;
-  background: var(--accent);
+  border-radius: 50%;
+  background: var(--focus-color);
   flex-shrink: 0;
 }
 
 .about-stats {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .stat-card {
   padding: 1.5rem;
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: var(--radius-lg);
+  text-align: center;
   transition: all var(--transition);
 }
 
 .stat-card:hover {
-  border-color: var(--accent);
+  border-color: var(--gradient-mid);
   transform: translateY(-4px);
-  box-shadow: 0 8px 32px var(--accent-glow);
+  box-shadow: 0 8px 32px var(--glow-purple);
 }
 
 .stat-number {
-  font-size: 2rem;
+  font-size: 2.25rem;
   font-weight: 800;
-  font-family: var(--font-mono);
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-family: var(--font-heading);
   margin-bottom: 0.25rem;
 }
 
 .stat-label {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
+.stat-card-special {
+  background: linear-gradient(135deg, var(--glow-purple), var(--glow-cyan));
+  border-color: transparent;
+}
+
+.stat-icon {
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+}
+
 @media (max-width: 768px) {
   .about-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 2.5rem;
   }
   .about-stats {
     grid-template-columns: 1fr 1fr;

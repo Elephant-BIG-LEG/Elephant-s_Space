@@ -1,45 +1,42 @@
-import './Skills.css';
-
-const backendIcon = (
-  <svg className="skill-category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="2" y="2" width="20" height="8" rx="2" />
-    <rect x="2" y="14" width="20" height="8" rx="2" />
-    <circle cx="6" cy="6" r="1" fill="currentColor" />
-    <circle cx="6" cy="18" r="1" fill="currentColor" />
-  </svg>
-);
-
-const aiIcon = (
-  <svg className="skill-category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 2a4 4 0 0 1 4 4v1h1a3 3 0 0 1 3 3v1a3 3 0 0 1-3 3h-1v4a4 4 0 0 1-8 0v-4H7a3 3 0 0 1-3-3v-1a3 3 0 0 1 3-3h1V6a4 4 0 0 1 4-4z" />
-    <circle cx="9" cy="10" r="1" fill="currentColor" />
-    <circle cx="15" cy="10" r="1" fill="currentColor" />
-  </svg>
-);
-
-const frontendIcon = (
-  <svg className="skill-category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-    <polyline points="16 18 22 12 16 6" />
-    <polyline points="8 6 2 12 8 18" />
-    <line x1="14" y1="4" x2="10" y2="20" />
-  </svg>
-);
+﻿import './Skills.css';
 
 const categories = [
   {
     title: '后端开发',
-    icon: backendIcon,
-    skills: ['Java', 'Spring Boot', 'MySQL', 'Redis', 'Netty', 'RocketMQ'],
+    icon: '🖥️',
+    gradient: 'linear-gradient(135deg, #a855f7, #6366f1)',
+    skills: [
+      { name: 'Java', level: 90 },
+      { name: 'Spring Boot', level: 85 },
+      { name: 'MySQL', level: 80 },
+      { name: 'Redis', level: 75 },
+      { name: 'Netty', level: 70 },
+      { name: 'RocketMQ', level: 65 },
+    ],
   },
   {
     title: 'AI 工程',
-    icon: aiIcon,
-    skills: ['LLM Application', 'Prompt Engineering', 'RAG', 'Embedding', 'Vector DB', 'Agent'],
+    icon: '🤖',
+    gradient: 'linear-gradient(135deg, #6366f1, #06b6d4)',
+    skills: [
+      { name: 'LLM Application', level: 85 },
+      { name: 'Prompt Engineering', level: 80 },
+      { name: 'RAG', level: 75 },
+      { name: 'Embedding', level: 70 },
+      { name: 'Vector DB', level: 65 },
+      { name: 'Agent', level: 60 },
+    ],
   },
   {
     title: '前端开发',
-    icon: frontendIcon,
-    skills: ['React', 'Vue', 'HTML/CSS', 'Vite'],
+    icon: '🎨',
+    gradient: 'linear-gradient(135deg, #06b6d4, #10b981)',
+    skills: [
+      { name: 'React', level: 80 },
+      { name: 'Vue', level: 70 },
+      { name: 'HTML/CSS', level: 85 },
+      { name: 'Vite', level: 75 },
+    ],
   },
 ];
 
@@ -53,14 +50,26 @@ function Skills() {
       </p>
       <div className="skills-grid">
         {categories.map((cat) => (
-          <div key={cat.title} className="skill-category">
-            {cat.icon}
-            <h3 className="skill-category-title">{cat.title}</h3>
-            <div className="skill-tags">
+          <div key={cat.title} className="skill-category reveal">
+            <div className="skill-category-header" style={{background: cat.gradient}}>
+              <span className="skill-category-icon">{cat.icon}</span>
+              <h3 className="skill-category-title">{cat.title}</h3>
+            </div>
+            <div className="skill-list">
               {cat.skills.map((skill) => (
-                <span key={skill} className="skill-tag">
-                  {skill}
-                </span>
+                <div key={skill.name} className="skill-item">
+                  <span className="skill-name">{skill.name}</span>
+                  <div className="skill-bar-bg">
+                    <div 
+                      className="skill-bar-fill" 
+                      style={{
+                        width: '0%',
+                        background: cat.gradient
+                      }}
+                      data-width={`${skill.level}%`}
+                    />
+                  </div>
+                </div>
               ))}
             </div>
           </div>
