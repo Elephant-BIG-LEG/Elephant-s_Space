@@ -1,4 +1,4 @@
-﻿import './Hero.css';
+import './Hero.css';
 
 function Hero() {
   return (
@@ -7,18 +7,18 @@ function Hero() {
       <div className="hero-content">
         <div className="hero-badge">
           <span className="hero-badge-dot" />
-          Available for opportunities
+          寻找机会中
         </div>
         <h1 className="hero-name">
-          Hi, I'm <span className="hero-name-accent">Elephant</span>
+          你好，我是 <span className="hero-name-accent">Elephant</span>
         </h1>
         <div className="hero-titles">
-          <span className="hero-title-tag">Backend Engineer</span>
-          <span className="hero-title-tag">AI Application Developer</span>
+          <span className="hero-title-tag">后端工程师</span>
+          <span className="hero-title-tag">AI 应用开发者</span>
         </div>
         <p className="hero-desc">
-          Building scalable backend systems and AI-powered applications.
-          Focused on Java ecosystem, distributed systems, and large language model applications.
+          构建可扩展的后端系统和 AI 驱动的应用程序。
+          专注于 Java 生态、分布式系统和大语言模型应用。
         </p>
         <div className="hero-actions">
           <a href="#projects" className="btn btn-primary">
@@ -27,7 +27,7 @@ function Hero() {
               <polyline points="2 17 12 22 22 17" />
               <polyline points="2 12 12 17 22 12" />
             </svg>
-            View Projects
+            查看项目
           </a>
           <a
             href="https://github.com/elephant"
@@ -45,12 +45,12 @@ function Hero() {
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
               <polyline points="22,6 12,13 2,6" />
             </svg>
-            Contact
+            联系我
           </a>
         </div>
       </div>
       <div className="hero-scroll">
-        <span>Scroll</span>
+        <span>向下滚动</span>
         <div className="hero-scroll-line" />
       </div>
     </section>

@@ -1,4 +1,4 @@
-﻿import './Skills.css';
+import './Skills.css';
 
 const backendIcon = (
   <svg className="skill-category-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -27,17 +27,17 @@ const frontendIcon = (
 
 const categories = [
   {
-    title: 'Backend',
+    title: '后端开发',
     icon: backendIcon,
     skills: ['Java', 'Spring Boot', 'MySQL', 'Redis', 'Netty', 'RocketMQ'],
   },
   {
-    title: 'AI Engineering',
+    title: 'AI 工程',
     icon: aiIcon,
     skills: ['LLM Application', 'Prompt Engineering', 'RAG', 'Embedding', 'Vector DB', 'Agent'],
   },
   {
-    title: 'Frontend',
+    title: '前端开发',
     icon: frontendIcon,
     skills: ['React', 'Vue', 'HTML/CSS', 'Vite'],
   },
@@ -46,10 +46,10 @@ const categories = [
 function Skills() {
   return (
     <section className="section skills" id="skills">
-      <div className="section-label">// Tech Stack</div>
-      <h2 className="section-title">Technologies</h2>
+      <div className="section-label">// 技术栈</div>
+      <h2 className="section-title">技术能力</h2>
       <p className="section-desc">
-        The tools and technologies I work with to build scalable systems and AI-powered applications.
+        我用来构建可扩展系统和 AI 驱动应用的工具和技术。
       </p>
       <div className="skills-grid">
         {categories.map((cat) => (

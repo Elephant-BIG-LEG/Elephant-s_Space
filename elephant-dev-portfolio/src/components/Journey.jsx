@@ -1,27 +1,27 @@
-﻿import './Journey.css';
+import './Journey.css';
 
 const journeySteps = [
   {
-    title: 'Backend Development',
-    desc: 'Started with Java and Spring Boot, building robust RESTful APIs and enterprise applications.',
+    title: '后端开发',
+    desc: '从 Java 和 Spring Boot 开始，构建稳健的 RESTful API 和企业级应用。',
   },
   {
-    title: 'Distributed Systems',
-    desc: 'Explored message queues, caching strategies, and network programming with Netty for high-concurrency systems.',
+    title: '分布式系统',
+    desc: '探索消息队列、缓存策略，以及使用 Netty 进行高并发系统的网络编程。',
   },
   {
-    title: 'AI Application Engineering',
-    desc: 'Transitioned into AI engineering — building LLM applications, RAG pipelines, and intelligent agents.',
+    title: 'AI 应用工程',
+    desc: '转型 AI 工程 — 构建 LLM 应用、RAG 管道和智能 Agent。',
   },
 ];
 
 function Journey() {
   return (
     <section className="section journey" id="journey">
-      <div className="section-label">// Journey</div>
-      <h2 className="section-title">Engineering Growth</h2>
+      <div className="section-label">// 历程</div>
+      <h2 className="section-title">成长历程</h2>
       <p className="section-desc">
-        My evolution as an engineer — from backend fundamentals to AI-powered systems.
+        我的工程师成长之路 — 从后端基础到 AI 驱动系统。
       </p>
       <div className="timeline">
         {journeySteps.map((step, i) => (

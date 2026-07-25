@@ -1,12 +1,12 @@
-﻿import './Contact.css';
+import './Contact.css';
 
 function Contact() {
   return (
     <section className="section contact" id="contact">
-      <div className="section-label">// Contact</div>
-      <h2 className="section-title">Get In Touch</h2>
+      <div className="section-label">// 联系</div>
+      <h2 className="section-title">联系我</h2>
       <p className="section-desc">
-        I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+        我始终乐于讨论新项目、创意想法，或加入你的愿景的机会。
       </p>
       <div className="contact-content">
         <div className="contact-links">
@@ -26,13 +26,13 @@ function Contact() {
               <rect x="2" y="4" width="20" height="16" rx="2" />
               <path d="M22 7l-10 6L2 7" />
             </svg>
-            Email
+            邮箱
           </a>
         </div>
       </div>
       <footer className="contact-footer">
         <p className="footer-text">
-          Designed & built by <span>Elephant</span> · © 2025
+          由 <span>Elephant</span> 设计与构建 · © 2025
         </p>
       </footer>
     </section>

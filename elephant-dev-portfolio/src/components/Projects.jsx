@@ -1,4 +1,4 @@
-﻿import './Projects.css';
+import './Projects.css';
 
 const folderIcon = (
   <svg className="project-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -16,18 +16,18 @@ const externalIcon = (
 
 const projects = [
   {
-    name: 'AI Tender Review System',
-    desc: 'An AI-powered document analysis system that uses LLMs to extract evaluation rules, analyze tender documents, and generate intelligent review reports.',
+    name: 'AI 标书评审系统',
+    desc: '基于 AI 的文档分析系统，使用 LLM 提取评审规则、分析标书文档并生成智能评审报告。',
     tech: ['Java', 'Spring Boot', 'LLM', 'RAG', 'Prompt Engineering'],
   },
   {
-    name: 'IM System',
-    desc: 'A real-time messaging system based on TCP persistent connections and Netty, supporting concurrent connections and message persistence.',
+    name: '即时通讯系统',
+    desc: '基于 TCP 长连接和 Netty 的实时消息系统，支持高并发连接和消息持久化。',
     tech: ['Netty', 'TCP', 'Redis', 'MySQL'],
   },
   {
     name: 'InsightRAG',
-    desc: 'A RAG-based knowledge assistant supporting document processing, vector retrieval and intelligent Q&A with multi-format document parsing.',
+    desc: '基于 RAG 的知识助手，支持文档处理、向量检索和多格式文档解析的智能问答。',
     tech: ['Embedding', 'Vector Search', 'FAISS', 'LLM'],
   },
 ];
@@ -35,10 +35,10 @@ const projects = [
 function Projects() {
   return (
     <section className="section projects" id="projects">
-      <div className="section-label">// Projects</div>
-      <h2 className="section-title">Featured Work</h2>
+      <div className="section-label">// 项目</div>
+      <h2 className="section-title">精选项目</h2>
       <p className="section-desc">
-        A selection of projects I've built that showcase my technical skills and problem-solving approach.
+        我构建的一些项目，展示了我的技术能力和解决问题的方法。
       </p>
       <div className="projects-grid">
         {projects.map((p) => (

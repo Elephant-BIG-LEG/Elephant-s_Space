@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 import './Nav.css';
 
 const links = [
-  { href: '#about', label: 'About' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#journey', label: 'Journey' },
-  { href: '#contact', label: 'Contact' },
+  { href: '#about', label: '关于' },
+  { href: '#skills', label: '技能' },
+  { href: '#projects', label: '项目' },
+  { href: '#journey', label: '历程' },
+  { href: '#contact', label: '联系' },
 ];
 
 function Nav() {
